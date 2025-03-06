@@ -3,6 +3,8 @@ const countdown = document.getElementById('countdown');
 const randomList = document.getElementById('numbers-list');
 const form = document.getElementById('answers-form');
 
+const inputGroup = document.querySelectorAll('#input-group');
+
 // ul.innertext=''
 // ul.innertext =ul.innertext + `<li>${numerorandom}</li>`
 
@@ -46,6 +48,32 @@ for (i = 0; i < 5; i++) {
 }
 console.log(randomNumbers);
 
+
+form.addEventListener('submit', function (event) {
+    // annullo refresh pagina
+    event.preventDefault();
+    console.log('sto clicckando');
+
+    let count = 0;
+    for (i = 0; i < randomNumbers.length; i++) {
+
+        if (randomNumbers.includes()) {
+
+        } else {
+            count++
+            console.log(count);
+        }
+    }
+
+
+
+
+
+
+
+
+
+})
 
 
 // funzione nmeri random 1-50
