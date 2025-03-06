@@ -1,6 +1,10 @@
 // creazione delle variabili necessarie
 const countdown = document.getElementById('countdown');
 const randomList = document.getElementById('numbers-list');
+const form = document.getElementById('answers-form');
+
+// ul.innertext=''
+// ul.innertext =ul.innertext + `<li>${numerorandom}</li>`
 
 // programmaz. countdown
 countdown.innerText = '10';
@@ -17,6 +21,7 @@ function CountdownNumb() {
     if (numb === 0) {
         clearInterval(Count30);
         randomList.classList.add("d-none");
+        form.classList.remove("d-none");
     }
 }
 
@@ -27,7 +32,7 @@ const randomNumbers = [];
 for (i = 0; i < 5; i++) {
     // creo <li>
     const liNumb = document.createElement('li');
-
+    // verifica che i numeri non si ripetano
     let number
     do {
         number = Random50();
@@ -40,9 +45,6 @@ for (i = 0; i < 5; i++) {
 
 }
 console.log(randomNumbers);
-
-
-
 
 
 
