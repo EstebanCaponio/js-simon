@@ -2,8 +2,8 @@
 const countdown = document.getElementById('countdown');
 const randomList = document.getElementById('numbers-list');
 const form = document.getElementById('answers-form');
-
-const inputGroup = document.querySelectorAll('#input-group');
+// creo variabile per prendere gli imput nel div
+const inputGroup = document.querySelectorAll('#input-group input');
 
 // ul.innertext=''
 // ul.innertext =ul.innertext + `<li>${numerorandom}</li>`
@@ -54,6 +54,11 @@ form.addEventListener('submit', function (event) {
     event.preventDefault();
     console.log('sto clicckando');
 
+    // evoco la funzione per creare array input con una variabile
+    let userNumbers = getUserNumbers();
+    console.log(userNumbers);
+
+
     let count = 0;
     for (i = 0; i < randomNumbers.length; i++) {
 
@@ -79,4 +84,21 @@ form.addEventListener('submit', function (event) {
 // funzione nmeri random 1-50
 function Random50() {
     return Math.floor(Math.random() * 50) + 1;
+}
+
+
+// Funzione per ottenere i valori inseriti
+function getUserNumbers() {
+    let Numbers = [];
+
+    inputGroup.forEach(input => {
+        // Converti il valore in numero intero
+        let value = parseInt(input.value, 10);
+        // Assicura che il valore sia un numero valido 
+        if (!isNaN(value)) {
+            Numbers.push(value);
+        }
+    });
+
+    return Numbers;
 }
