@@ -29,7 +29,7 @@ function CountdownNumb() {
 const randomNumbers = [];
 
 // generazione numeri random
-for (i = 0; i < 5; i++) {
+for (let i = 0; i < 5; i++) {
     // creo <li>
     const liNumb = document.createElement('li');
     // verifica che i numeri non si ripetano
@@ -68,7 +68,7 @@ form.addEventListener('submit', function (event) {
         // ciclo per contare i numeri giusti
         let guessed = [];
         let count = 0;
-        for (i = 0; i < randomNumbers.length; i++) {
+        for (let i = 0; i < randomNumbers.length; i++) {
 
             if (randomNumbers.includes(userNumbers[i])) {
                 count++;
