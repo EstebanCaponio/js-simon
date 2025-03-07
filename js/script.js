@@ -6,9 +6,6 @@ const message = document.getElementById('message');
 // creo variabile per prendere gli imput nel div
 const inputGroup = document.querySelectorAll('#input-group input');
 
-// ul.innertext=''
-// ul.innertext =ul.innertext + `<li>${numerorandom}</li>`
-
 // programmaz. countdown
 countdown.innerText = '10';
 
@@ -49,7 +46,6 @@ for (i = 0; i < 5; i++) {
 }
 console.log(randomNumbers);
 
-
 form.addEventListener('submit', function (event) {
     // annullo refresh pagina
     event.preventDefault();
@@ -59,7 +55,6 @@ form.addEventListener('submit', function (event) {
     // evoco la funzione per creare array input con una variabile
     let userNumbers = getUserNumbers();
     console.log(userNumbers);
-
 
     if (hasDuplicates(userNumbers) === true) {
         console.log('ci sono numeri che si ripetono');
@@ -78,19 +73,13 @@ form.addEventListener('submit', function (event) {
             if (randomNumbers.includes(userNumbers[i])) {
                 count++;
                 guessed.push(userNumbers[i]);
-            }
-            
+            } 
         }
 
         console.log(`hai indovinato ${count} numeri!  (${guessed.join(', ')})`);
         message.innerText = `hai indovinato ${count} numeri! (${guessed.join(', ')})`;
 
     }
-
-
-
-
-
 
 })
 
@@ -100,7 +89,6 @@ form.addEventListener('submit', function (event) {
 function Random50() {
     return Math.floor(Math.random() * 50) + 1;
 }
-
 
 // Funzione per ottenere i valori inseriti
 function getUserNumbers() {
@@ -114,10 +102,8 @@ function getUserNumbers() {
             Numbers.push(value);
         }
     });
-
     return Numbers;
 }
-
 
 // Funzione per vedere se ci sono doppioni
 function hasDuplicates(arr) {
