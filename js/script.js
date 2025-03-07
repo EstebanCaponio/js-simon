@@ -2,6 +2,7 @@
 const countdown = document.getElementById('countdown');
 const randomList = document.getElementById('numbers-list');
 const form = document.getElementById('answers-form');
+const message = document.getElementById('message');
 // creo variabile per prendere gli imput nel div
 const inputGroup = document.querySelectorAll('#input-group input');
 
@@ -52,6 +53,7 @@ console.log(randomNumbers);
 form.addEventListener('submit', function (event) {
     // annullo refresh pagina
     event.preventDefault();
+
     console.log('sto clicckando');
 
     // evoco la funzione per creare array input con una variabile
@@ -59,19 +61,31 @@ form.addEventListener('submit', function (event) {
     console.log(userNumbers);
 
 
-    let count = 0;
-    for (i = 0; i < randomNumbers.length; i++) {
+    if (hasDuplicates(userNumbers) === true) {
+        console.log('ci sono numeri che si ripetono');
+        message.innerText = 'ERRORE: ci sono numeri che si ripetono';
+        message.classList.remove('text-success');
+        message.classList.add('text-danger');
 
-        if (randomNumbers.includes()) {
+    } else {
+        message.classList.add('text-success');
+        message.classList.remove('text-danger');
+        // ciclo per contare i numeri giusti
+        let guessed = [];
+        let count = 0;
+        for (i = 0; i < randomNumbers.length; i++) {
 
-        } else {
-            count++
-            console.log(count);
+            if (randomNumbers.includes(userNumbers[i])) {
+                count++;
+                guessed.push(userNumbers[i]);
+            }
+            
         }
+
+        console.log(`hai indovinato ${count} numeri!  (${guessed.join(', ')})`);
+        message.innerText = `hai indovinato ${count} numeri! (${guessed.join(', ')})`;
+
     }
-
-
-
 
 
 
@@ -80,6 +94,7 @@ form.addEventListener('submit', function (event) {
 
 })
 
+// FUNZIONI:
 
 // funzione nmeri random 1-50
 function Random50() {
@@ -101,4 +116,10 @@ function getUserNumbers() {
     });
 
     return Numbers;
+}
+
+
+// Funzione per vedere se ci sono doppioni
+function hasDuplicates(arr) {
+    return arr.filter((value, index, self) => self.indexOf(value) !== index).length > 0;
 }
