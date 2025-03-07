@@ -73,12 +73,15 @@ form.addEventListener('submit', function (event) {
             if (randomNumbers.includes(userNumbers[i])) {
                 count++;
                 guessed.push(userNumbers[i]);
-            } 
+            }
         }
 
-        console.log(`hai indovinato ${count} numeri!  (${guessed.join(', ')})`);
-        message.innerText = `hai indovinato ${count} numeri! (${guessed.join(', ')})`;
-
+        if (count === 0) { 
+            message.innerText = `Tutti i numeri sono sbagliati, riprova.`;
+        } else {
+            console.log(`hai indovinato ${count} numeri!  (${guessed.join(', ')})`);
+            message.innerText = `hai indovinato ${count} numeri! (${guessed.join(', ')})`;
+        }
     }
 
 })
